@@ -61,7 +61,9 @@ class ZwaveSwitch(zwave.ZWaveDeviceEntity, SwitchDevice):
     def turn_on(self, **kwargs):
         """Turn the device on."""
         self._value.node.set_switch(self._value.value_id, True)
+        self._value.node.refresh_value(self._value.value_id)
 
     def turn_off(self, **kwargs):
         """Turn the device off."""
         self._value.node.set_switch(self._value.value_id, False)
+        self._value.node.refresh_value(self._value.value_id)
